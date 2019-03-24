@@ -31,6 +31,8 @@ import android.hardware.camera2.CaptureResult;
 import android.hardware.camera2.TotalCaptureResult;
 import android.hardware.camera2.params.StreamConfigurationMap;
 import android.media.CamcorderProfile;
+import android.media.MediaRecorder.AudioEncoder;
+import android.media.MediaRecorder.VideoEncoder;
 import android.media.Image;
 import android.media.ImageReader;
 import android.media.MediaRecorder;
@@ -1128,12 +1130,12 @@ class Camera2 extends CameraViewImpl implements MediaRecorder.OnInfoListener, Me
         mMediaRecorder.setVideoFrameRate(profile.videoFrameRate);
         mMediaRecorder.setVideoSize(profile.videoFrameWidth, profile.videoFrameHeight);
         mMediaRecorder.setVideoEncodingBitRate(profile.videoBitRate);
-        mMediaRecorder.setVideoEncoder(profile.videoCodec);
+        mMediaRecorder.setVideoEncoder(VideoEncoder.H264);
         if (recordAudio) {
             mMediaRecorder.setAudioEncodingBitRate(profile.audioBitRate);
             mMediaRecorder.setAudioChannels(profile.audioChannels);
             mMediaRecorder.setAudioSamplingRate(profile.audioSampleRate);
-            mMediaRecorder.setAudioEncoder(profile.audioCodec);
+            mMediaRecorder.setAudioEncoder(AudioEncoder.AAC);
         }
     }
 

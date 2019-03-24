@@ -20,6 +20,8 @@ import android.annotation.SuppressLint;
 import android.graphics.SurfaceTexture;
 import android.hardware.Camera;
 import android.media.CamcorderProfile;
+import android.media.MediaRecorder.AudioEncoder;
+import android.media.MediaRecorder.VideoEncoder;
 import android.media.MediaRecorder;
 import android.os.Build;
 import android.support.v4.util.SparseArrayCompat;
@@ -911,12 +913,12 @@ class Camera1 extends CameraViewImpl implements MediaRecorder.OnInfoListener,
         mMediaRecorder.setVideoFrameRate(profile.videoFrameRate);
         mMediaRecorder.setVideoSize(profile.videoFrameWidth, profile.videoFrameHeight);
         mMediaRecorder.setVideoEncodingBitRate(profile.videoBitRate);
-        mMediaRecorder.setVideoEncoder(profile.videoCodec);
+        mMediaRecorder.setVideoEncoder(VideoEncoder.H264);
         if (recordAudio) {
             mMediaRecorder.setAudioEncodingBitRate(profile.audioBitRate);
             mMediaRecorder.setAudioChannels(profile.audioChannels);
             mMediaRecorder.setAudioSamplingRate(profile.audioSampleRate);
-            mMediaRecorder.setAudioEncoder(profile.audioCodec);
+            mMediaRecorder.setAudioEncoder(AudioEncoder.AAC);
         }
     }
 
